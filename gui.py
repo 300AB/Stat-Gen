@@ -14,14 +14,14 @@ def Stat(min=0):
     return r1+r2+r3
 
 def file_write():
-    myFile = open("sample.txt", mode="r+")
+    myFile = open("stat_file.txt", mode="r+")
     print("The content of the file before modification is:")
     text = myFile.read()
     print(text)
     #set each Stat() to Stat(1) to debug and see all d6
     print(Stat(),Stat(),Stat(),Stat(),Stat(),Stat(), file=myFile)
     myFile.close()
-    myFile = open("sample.txt", "r")
+    myFile = open("stat_file.txt", "r")
     print("The content of the file after modification is:")
     text = myFile.read()
     print(text)
