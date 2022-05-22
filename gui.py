@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import*
 import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
@@ -14,14 +15,14 @@ def Stat(min=0):
     return r1+r2+r3
 
 def file_write():
-    myFile = open("stat_file.txt", mode="r+")
+    myFile = open("sample.txt", mode="r+")
     print("The content of the file before modification is:")
     text = myFile.read()
     print(text)
     #set each Stat() to Stat(1) to debug and see all d6
     print(Stat(),Stat(),Stat(),Stat(),Stat(),Stat(), file=myFile)
     myFile.close()
-    myFile = open("stat_file.txt", "r")
+    myFile = open("sample.txt", "r")
     print("The content of the file after modification is:")
     text = myFile.read()
     print(text)
@@ -32,18 +33,19 @@ root = tk.Tk()
 canvas = tk.Canvas(root, width=300, height=300)
 canvas.grid(columnspan=3, rowspan=3)
 
+root.configure(bg='gray')
+canvas.config(bg='gray')
 
-#logo
-logo = Image.open('logo.png')
-logo = ImageTk.PhotoImage(logo)
-logo_label = tk.Label(image=logo)
-logo_label.image = Image
-logo_label.grid(column=1,row=0)
+bg = PhotoImage(file="logo.png")
+l1 = Label(root,image=bg,bg='gray')
+l1.place(x=0,y=0,relheight=1,relwidth=1)
+
 
 #instructions
-instructions = tk.Label(root, text="Click for stats output is in stat_file, every click appends more stats", font="Raleway", fg="gray")
+instructions = tk.Label(root, text="Click for stats output is in stat_file, every click appends more stats", font="Raleway", fg="white")
+instructions.grid(columnspan=3, column=0, row=3)
+instructions.config(bg='gray')
 
-instructions.grid(columnspan=3, column=0, row=1)
 
 def button_true():
     browse_text.set("good luck")
@@ -57,7 +59,7 @@ def button_true():
 
 #button
 browse_text = tk.StringVar()
-browse_btn = tk.Button(root, textvariable= browse_text, command=lambda:button_true(), font="Raleway", bg="black", fg="gray", width=7, height=1)
+browse_btn = tk.Button(root, textvariable= browse_text, command=lambda:button_true(), font="Raleway", bg="black", fg="white", width=7, height=1)
 browse_text.set("Start")
 browse_btn.grid(column=1,row= 2)
 
