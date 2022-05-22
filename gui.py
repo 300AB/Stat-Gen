@@ -29,6 +29,7 @@ def file_write():
 
 
 root = tk.Tk()
+root.title ("Hello")
 
 canvas = tk.Canvas(root, width=300, height=300)
 canvas.grid(columnspan=3, rowspan=3)
